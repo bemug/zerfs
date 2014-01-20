@@ -1,6 +1,6 @@
 #Change this if you need to target a specific CMake version
 cmake_minimum_required(VERSION 2.6)
-project(zeldaclone)
+project(zerfs)
 
 # Enable debug symbols by default
 if(CMAKE_BUILD_TYPE STREQUAL "")
@@ -18,7 +18,7 @@ configure_file(
 include_directories("${PROJECT_BINARY_DIR}")
 
 # Define sources and executable
-set(EXECUTABLE_NAME "zeldaclone")
+set(EXECUTABLE_NAME "zerfs")
 file(GLOB_RECURSE source_files "${PROJECT_SOURCE_DIR}/src/*")
 add_executable(${EXECUTABLE_NAME} ${source_files})
 
