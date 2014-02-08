@@ -69,10 +69,10 @@ void Hero::trySendBall(int x, int y, Hero **heroes) {
 		if (i != 0) //This is not me
 		{
 			/* Collision testing */
-			if (heroes[i]->getX() > x
-				&& heroes[i]->getX() + HERO_WIDTH < x
-				&& heroes[i]->getY() > y
-				&& heroes[i]->getY() + HERO_HEIGHT < y) {
+			if (heroes[i]->getX() < x
+				&& heroes[i]->getX() + HERO_WIDTH > x
+				&& heroes[i]->getY() < y
+				&& heroes[i]->getY() + HERO_HEIGHT > y) {
 
 				cout << "Collision!" << endl;
 			}
