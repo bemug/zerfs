@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 					}
 					if (event.mouseButton.button == sf::Mouse::Left) {
 						cout << "Left click!" << endl;
-						heroes[0]->trySendBall(event.mouseButton.x, event.mouseButton.y);
+						heroes[0]->trySendBall(event.mouseButton.x, event.mouseButton.y, heroes);
 					}
 					break;
 				default:

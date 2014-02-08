@@ -6,7 +6,6 @@
 
 using namespace std;
 
-Hero *heroes[NB_PLAYERS];
 
 Hero::Hero(int x, int y) {
 	setX(x);
@@ -63,7 +62,7 @@ void Hero::prepareMove() {
 	moving = true;
 }
 
-void Hero::trySendBall(int x, int y) {
+void Hero::trySendBall(int x, int y, Hero **heroes) {
 	cout << x << " " << y << endl;
 	/* Check if someone is over there */
 	for(int i=0; i<NB_PLAYERS; i++) {

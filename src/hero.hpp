@@ -33,7 +33,7 @@ class Hero {
 		bool isMoving();
 
 		void prepareMove();
-		void trySendBall(int, int);
+		void trySendBall(int, int, Hero**);
 		void move();
 		void draw(sf::RenderWindow*);
 };
