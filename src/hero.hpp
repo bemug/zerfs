@@ -31,8 +31,10 @@ class Hero {
 		void setAimX(int);
 		void setAimY(int);
 		bool isMoving();
+		void setBall(Ball*);
 
 		void prepareMove();
+		bool hasBall();
 		void trySendBall(int, int, Hero**);
 		void move();
 		void draw(sf::RenderWindow*);

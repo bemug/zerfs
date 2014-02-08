@@ -15,7 +15,7 @@ Hero::Hero(int x, int y) {
 	moving = false;
 	sprite = sf::RectangleShape(sf::Vector2f(HERO_WIDTH, HERO_HEIGHT));
 	sprite.setFillColor(sf::Color(100, 255, 100));
-	ball = new Ball(0,0);
+	ball = NULL;
 }
 
 float Hero::getX() {
@@ -62,6 +62,10 @@ void Hero::prepareMove() {
 	moving = true;
 }
 
+void Hero::setBall(Ball *ball) {
+	this->ball = ball;
+}
+
 void Hero::trySendBall(int x, int y, Hero **heroes) {
 	cout << x << " " << y << endl;
 	/* Check if someone is over there */
@@ -79,6 +83,10 @@ void Hero::trySendBall(int x, int y, Hero **heroes) {
 				
 		}
 	}
+}
+
+bool Hero::hasBall() {
+	return ball != NULL;
 }
 
 void Hero::move() {
@@ -133,6 +141,10 @@ void Hero::move() {
 
 void Hero::draw(sf::RenderWindow *app) {
 	/* We maitain position as floats for precision and map them as int for display */
+	if (this->hasBall()) {
+		sprite.setOutlineColor(sf::Color::White);
+		sprite.setOutlineThickness(-3.0); //Negative so that it doesn't expand
+	}
 	sprite.setPosition(x,y);
 	app->draw(sprite);
 }

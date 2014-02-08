@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "config.h"
 #include "hero.hpp"
+#include "ball.hpp"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ int main(int argc, char* argv[]) {
 	Hero *heroes[NB_PLAYERS];
 	heroes[0] = new Hero(100,100);
 	heroes[1] = new Hero(200,200);
+	Ball *ball = new Ball(200,200);
+	heroes[0]->setBall(ball);
 	sf::RenderWindow app(sf::VideoMode(800, 600), "Zerfs");
 	app.setFramerateLimit(60);
 
