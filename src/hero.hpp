@@ -5,6 +5,7 @@
 #define HERO_WIDTH 30
 #define HERO_HEIGHT 30
 #define SPEED 10
+#define NB_PLAYERS 2
 
 class Ball;
 

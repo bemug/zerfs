@@ -6,6 +6,8 @@
 
 using namespace std;
 
+Hero *heroes[NB_PLAYERS];
+
 Hero::Hero(int x, int y) {
 	setX(x);
 	setY(y);
@@ -63,6 +65,21 @@ void Hero::prepareMove() {
 
 void Hero::trySendBall(int x, int y) {
 	cout << x << " " << y << endl;
+	/* Check if someone is over there */
+	for(int i=0; i<NB_PLAYERS; i++) {
+		if (i != 0) //This is not me
+		{
+			/* Collision testing */
+			if (heroes[i]->getX() > x
+				&& heroes[i]->getX() + HERO_WIDTH < x
+				&& heroes[i]->getY() > y
+				&& heroes[i]->getY() + HERO_HEIGHT < y) {
+
+				cout << "Collision!" << endl;
+			}
+				
+		}
+	}
 }
 
 void Hero::move() {

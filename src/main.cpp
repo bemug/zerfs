@@ -2,7 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "config.h"
 #include "hero.hpp"
+
 using namespace std;
+
 
 int main(int argc, char* argv[]) {
 
@@ -10,11 +12,10 @@ int main(int argc, char* argv[]) {
 	cout << "Version " << VERSION_MAJOR << "." << VERSION_MINOR << endl;
 
 	/* Initializing the game */
-	Hero hero(200,200);
-	Hero *heroes[2];
+	Hero *heroes[NB_PLAYERS];
 	heroes[0] = new Hero(100,100);
 	heroes[1] = new Hero(200,200);
-	sf::RenderWindow app(sf::VideoMode(800, 600), "Zelda Clone");
+	sf::RenderWindow app(sf::VideoMode(800, 600), "Zerfs");
 	app.setFramerateLimit(60);
 
 	while (app.isOpen()) {
