@@ -67,22 +67,33 @@ void Hero::setBall(Ball *ball) {
 }
 
 void Hero::trySendBall(int x, int y, Hero **heroes) {
-	cout << x << " " << y << endl;
-	/* Check if someone is over there */
-	for(int i=0; i<NB_PLAYERS; i++) {
-		if (i != 0) //This is not me
-		{
-			/* Collision testing */
-			if (heroes[i]->getX() < x
-				&& heroes[i]->getX() + HERO_WIDTH > x
-				&& heroes[i]->getY() < y
-				&& heroes[i]->getY() + HERO_HEIGHT > y) {
+	if (hasBall()) {
+		cout << x << " " << y << endl;
+		/* Check if someone is over there */
+		for(int i=0; i<NB_PLAYERS; i++) {
+			if (i != 0) //This is not me
+			{
+				/* Collision testing */
+				if (heroes[i]->getX() < x
+						&& heroes[i]->getX() + HERO_WIDTH > x
+						&& heroes[i]->getY() < y
+						&& heroes[i]->getY() + HERO_HEIGHT > y) {
 
-				cout << "Collision!" << endl;
+					cout << "Collision!" << endl;
+
+					sendBall(heroes[i], ball);
+				}
 			}
-				
 		}
 	}
+	else {
+		cout << "You don't have the ball!" << endl;
+	}
+}
+
+void Hero::sendBall(Hero *target, Ball *ball) {
+	target->ball = ball;
+	this->ball = NULL;
 }
 
 bool Hero::hasBall() {
@@ -142,8 +153,10 @@ void Hero::move() {
 void Hero::draw(sf::RenderWindow *app) {
 	/* We maitain position as floats for precision and map them as int for display */
 	if (this->hasBall()) {
-		sprite.setOutlineColor(sf::Color::White);
 		sprite.setOutlineThickness(-3.0); //Negative so that it doesn't expand
+	}
+	else {
+		sprite.setOutlineThickness(0.0); 
 	}
 	sprite.setPosition(x,y);
 	app->draw(sprite);

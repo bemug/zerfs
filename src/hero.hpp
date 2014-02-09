@@ -36,6 +36,7 @@ class Hero {
 		void prepareMove();
 		bool hasBall();
 		void trySendBall(int, int, Hero**);
+		void sendBall(Hero* , Ball*);
 		void move();
 		void draw(sf::RenderWindow*);
 };
